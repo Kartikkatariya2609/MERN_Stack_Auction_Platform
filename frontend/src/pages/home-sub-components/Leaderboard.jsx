@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const Leaderboard = () => {
   const { leaderboard } = useSelector((state) => state.user);
+  // console.log(leaderboard);
   return (
     <>
       <section className="my-8 lg:px-5">
@@ -27,6 +28,7 @@ const Leaderboard = () => {
             </thead>
             <tbody className="text-gray-700">
               {leaderboard.slice(0, 10).map((element, index) => {
+                // console.log(element);
                 return (
                   <tr key={element._id} className="border-b border-gray-300">
                     <td className="flex gap-2 items-center py-2 px-4">

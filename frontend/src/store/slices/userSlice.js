@@ -98,10 +98,13 @@ export const register = (data) => async (dispatch) => {
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
+
+
     dispatch(userSlice.actions.registerSuccess(response.data));
     toast.success(response.data.message);
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
+    
     dispatch(userSlice.actions.registerFailed());
     toast.error(error.response.data.message);
     dispatch(userSlice.actions.clearAllErrors());
@@ -118,7 +121,9 @@ export const login = (data) => async (dispatch) => {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },
       }
+
     );
+    console.log(response);
     dispatch(userSlice.actions.loginSuccess(response.data));
     toast.success(response.data.message);
     dispatch(userSlice.actions.clearAllErrors());

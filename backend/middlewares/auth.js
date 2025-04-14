@@ -5,11 +5,15 @@ import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
 
 export const isAuthenticated = catchAsyncErrors(async (req, res, next) => {
   const token = req.cookies.token;
+  // console.log(token);
   if (!token) {
     return next(new ErrorHandler("User not authenticated.", 400));
   }
-  const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+  // console.log(token);
+  const decoded = jwt.verify(token, "secret123");
+  // console.log(decoded);
   req.user = await User.findById(decoded.id);
+  console.log
   next();
 });
 
